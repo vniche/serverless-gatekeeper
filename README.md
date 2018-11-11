@@ -41,7 +41,7 @@ give `gatekeeper.yaml` some attention, replace these with some real values:
 ```
 # uncomment if client is confidential
 # client-secret: <client_secret>
-discovery-url: http://<keycloak_address>/auth/realms/poc
+discovery-url: http://<keycloak_address>/auth/realms/justice-league
 encryption_key: <random_generated_secret>
 upstream-url: http://<service_address>
 ```
@@ -80,7 +80,9 @@ $ curl -X POST \
 make a request to endpoint with `clarkkent` token:
 
 ```
-$ curl -H 'Authorization: Bearer ...8vMTI3LjAuMC4xiJiYWNjNmNkYy05M...' --proxy http://127.0.0.1:3000 http://isprime.poc.svc:8080/isprime -d '5' -v
+$ curl -H 'Authorization: Bearer ...8vMTI3LjAuMC4xiJiYWNjNmNkYy05M...' \
+    --proxy http://127.0.0.1:3000 http://isprime.poc.svc:8080/isprime \
+    -d '5' -v
 *   Trying 127.0.0.1...
 ...
 * upload completely sent off: 1 out of 1 bytes
@@ -105,7 +107,9 @@ curl -X POST \
 make a request to endpoint with `superman` token:
 
 ```
-$ curl -H ‘Authorization: Bearer …oxNTQxOTYwMzg3LCJpc…’ --proxy http://127.0.0.1:3000 http://isprime.poc.svc:8080/isprime -d ‘5’ -v
+$ curl -H ‘Authorization: Bearer …oxNTQxOTYwMzg3LCJpc…’ \
+    --proxy http://127.0.0.1:3000 http://isprime.poc.svc:8080/isprime \
+    -d ‘5’ -v
 * Trying 127.0.0.1…
 ...
 * upload completely sent off: 1 out of 1 bytes

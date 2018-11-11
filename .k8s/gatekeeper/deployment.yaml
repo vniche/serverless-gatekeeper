@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: service-gatekeeper
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: service-gatekeeper
+      annotations:
+        repository: https://github.com/keycloak/keycloak-gatekeeper
+    spec:
+      containers:
+      - name: service-gatekeeper
+        image: keycloak/keycloak-gatekeeper:v2.3.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - --config=/etc/secrets/gatekeeper.yaml
+        - --enable-logging=true
+        - --enable-json-logging=true
+        - --verbose=true
+        volumeMounts:
+        - name: secrets
+          mountPath: /etc/secrets
+      volumes:
+      - name: secrets
+        secret:
+          secretName: gatekeeper

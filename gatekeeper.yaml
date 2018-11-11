@@ -1,0 +1,15 @@
+client-id: service-gatekeeper
+# uncomment if client is confidential
+# client-secret: <client_secret>
+enable-default-deny: true
+# encryption key used to encryption the session state [$PROXY_ENCRYPTION_KEY]
+encryption_key: <random_generated_secret>
+listen: 127.0.0.1:3000
+upstream-url: http://<service_address>
+resources:
+- uri: /isprime
+  methods:
+  - POST
+  roles:
+  - service-gatekeeper:edit
+  require-any-role: true

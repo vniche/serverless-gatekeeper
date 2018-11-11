@@ -96,7 +96,10 @@ $ curl -H 'Authorization: Bearer ...8vMTI3LjAuMC4xiJiYWNjNmNkYy05M...' --proxy h
 request token as `superman`:
 
 ```
-curl -X POST ‘http://127.0.0.1:8080/auth/realms/justice-league/protocol/openid-connect/token' -H “Content-Type: application/x-www-form-urlencoded” -d ‘username=superman&password=<superman_password>&grant_type=password&client_id=service-gatekeeper’
+curl -X POST \
+    ‘http://127.0.0.1:8080/auth/realms/justice-league/protocol/openid-connect/token' \
+    -H “Content-Type: application/x-www-form-urlencoded” \
+    -d ‘username=superman&password=<superman_password>&grant_type=password&client_id=service-gatekeeper’
 ```
 
 make a request to endpoint with `superman` token:
